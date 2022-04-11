@@ -1,0 +1,73 @@
+\documentclass[12pt,twocolumn]{article}
+
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{Assignment I (ICSE Class 10 2018 Problem 3b )}
+\author{Asli Nitej Reddy (CS21BTECH11011)}
+
+
+\begin{document}
+\vspace{3cm}
+\maketitle
+
+\section*{problem 3b}
+ Prove $\sqrt{\sec^2{\theta}+\csc^2{\theta}}\hspace{0.2cm} =\hspace{0.2cm} (\tan{\theta}+\cot{\theta})$
+
+\section*{Solution}
+
+Let's divide the equation into 2 parts those are LHS and RHS and lets simplyfy both LHS and RHS and find their simplyfied value if both are same then statement is true if not then false
+\newline
+What we know before starting proof are 
+\begin{align}
+ \sin^2{\theta}+\cos^2{\theta} = 1 \\
+ \sec{\theta}=\frac{1}{\cos{\theta}} \\
+ \csc{\theta}=\frac{1}{\sin{\theta}} \\
+ \tan{\theta}=\frac{\sin{\theta}}{\cos{\theta}} \\
+ \cot{\theta}=\frac{\cos{\theta}}{\sin{\theta}} 
+\end{align}
+we may use these equations in simplyfying RHS ans LHS
+\subsection*{Simplyfying LHS}
+ \begin{align}
+  LHS &\Rightarrow \sqrt{\sec^2{\theta}+\csc^2{\theta}}  \\
+     &\Rightarrow \sqrt{\frac{1}{\sin^2{\theta}}+\frac{1}{\cos^2{\theta}}}\\
+     &\Rightarrow \sqrt{\frac{\sin^2{\theta}+\cos^2{\theta}}{\sin^2{\theta}\times\cos^2{\theta}}} \\
+     &\Rightarrow \sqrt{\frac{1}{\sin^2{\theta}\times\cos^2{\theta}}} \\
+     &\Rightarrow \sqrt{\sec^2{\theta}\times\csc^2{\theta}} \\
+     &\Rightarrow \sec{\theta}\times\csc{\theta}  
+ \end{align}
+ on simplyfying LHS we got 
+ \begin{equation}
+ \label{eqn:part1end}
+ LHS = \sec{\theta}\times\csc{\theta}
+ \end{equation}
+
+\subsection*{Simplyfying RHS}
+ \begin{align}
+  RHS&\Rightarrow \tan{\theta}\hspace{1pt}+\hspace{1pt}\cot{\theta}  \\
+     &\Rightarrow  \frac{\sin{\theta}}{\cos{\theta}}\hspace{1pt}+\hspace{1pt}\frac{\cos{\theta}}{\sin{\theta}} \\
+     &\Rightarrow \frac{\sin^2{\theta}+\cos^2{\theta}}{\sin{\theta}\times\cos{\theta}}\\
+     &\Rightarrow \frac{1}{\sin{\theta}\times\cos{\theta}}\\
+     &\Rightarrow \sec{\theta}\times\csc{\theta}
+ \end{align}
+on simplyfying RHS we got
+\begin{equation}
+\label{eqn:part2end}
+RHS =  \sec{\theta}\times\csc{\theta}
+\end{equation}
+
+\section*{conclusion}
+ based on eq\ref{eqn:part1end} and eq\ref{eqn:part2end} we will get down equation
+ $\{ when \hspace{1pt} \sec{\theta}\times\csc{\theta} >0\}$
+ \begin{equation}
+ LHS = RHS =   \sec{\theta}\times\csc{\theta}
+  \end{equation}
+ 
+
+\[\therefore\sqrt{\sec^2{\theta}+\csc^2{\theta}}\hspace{0.2cm} =\hspace{0.2cm} (\tan{\theta}+\cot{\theta})\]
+
+
+\[\textbf{Hence Proved}\]
+\end{document}
