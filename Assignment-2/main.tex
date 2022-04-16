@@ -8,106 +8,105 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 
-\begin{document}
-
-
-\title{Assignment 2 \\ \Large AI1110: Probability and Random Variables \\ \large Indian Institute of Technology Hyderabad}
-\author{Busireddy Asli Nitej Reddy\\ \normalsize CS21BTECH11011  \\ \Large ICSE 2019 Grade 12}
+\title{Assignment 2 (ICSE 2019 Grade 12) }
+\author{Busireddy Asli Nitej Reddy (CS21BTECH11011)}
 \date{}
+
+
+
+\begin{document}
 \maketitle
 
 
-\begin{flushleft}
 
 \section*{\textbf{Problem 2(A)}}
 The following results were obtained with respect to two variable $x$ and $y$
-       \newline
-       $\sum x = 15$ , $\sum y = 25$ , $\sum xy = 83$
-       \newline
-       $\sum x^{2} = 55$ , $\sum y^{2} = 135$ , $\sum n = 5$
-       
-      \begin{enumerate}
-         \item Find the regression coefficient $b_{xy}$
-         \item Find the regression equation of $x$ on $y$
-      \end{enumerate}
+    \begin{table}[!htb]
+        \centering
+        \resizebox{\columnwidth}{!} {
+          
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+              \hline
+               sigma  &  $\sum x$  &  $\sum y$  &  $\sum xy$  &  $\sum x^{2}$  &  $\sum y^{2}$  & $\sum n$  \\  \hline
+               value  &    15      &     25     &     83      &     55         &       135      &     5     \\  
+              \hline
+            \end{tabular}
+            
+            }
+        \caption{all values of sigmas in a table}
+        \label{tab:table}
+    \end{table}
+
+    \begin{enumerate}
+       \item Find the regression coefficient $b_{xy}$
+       \item Find the regression equation of $x$ on $y$
+    \end{enumerate}
 
 
 
 \section*{\textbf{Solution}}
-   we are already given the 
-       \newline
-          $\sum x = 15$ , $\sum y = 25$ , $\sum xy = 83$
-      \newline
-          $\sum x^{2} = 55$ , $\sum y^{2} = 135$ , $\sum n = 5$
-      \newline
-   so let's start the part wise solutions
   
-  
-  
+ 
+ 
 \subsection*{\textbf{Part 1}}
-   in this part we need to find the regression coefficient $b_{xy}$
-   \newline
+   
    the formulae for calculating $b_{xy}$ is
    
-      \begin{equation}
+    \begin{equation}
           \label{eq:b_xy}
           b_{xy}=\frac{\sum xy-\frac{{\sum x}\times  {\sum y}}{n} }{\sum y^{2}-\frac{(\sum y)^{2}}{n} }
-      \end{equation}
+    \end{equation}
       
-   on substituting the values in eq\eqref{eq:b_xy} and simplyfying  we get 
+     substituting the values in eq\eqref{eq:b_xy} 
  
-      \begin{align}
-          b_{xy}=\frac{83-\frac{15\times25}{5}}{135-\frac{(25)^{2}}{5} } = \frac{4}{5} = 0.8
-      \end{align}
+    \begin{align}
+        b_{xy}=\frac{83-\frac{15\times25}{5}}{135-\frac{(25)^{2}}{5} } = \frac{4}{5} = 0.8
+    \end{align}
      
 $\therefore$ the value of $b_{xy}$ is 0.8
  
  
  
- 
 \subsection*{\textbf{Part 2}}
- in this part we need to find the regression equation of $x$ on $y$
- \newline
- formulae for that is 
+ in this part we need to find the regression equation of $x$ on $y$ formulae for that is 
  
-       \begin{equation}
-           \label{eq:eq_x_on_y}
-           x-\overline{x} = b_{xy}(y-\overline{y})
-       \end{equation}
+    \begin{equation}
+        \label{eq:eq_x_on_y}
+        x-\overline{x} = b_{xy}(y-\overline{y})
+    \end{equation}
        
   where $\overline{x},\overline{y}$ are average of $x$ and $y$
  
-       \begin{align}
-           \overline{x} = \frac{\sum x}{n} = \frac{15}{5} = 3 \\
-           \overline{y} = \frac{\sum y}{n} = \frac{25}{5} = 5
-       \end{align}
+    \begin{align}
+         \overline{x} = \frac{\sum x}{n} = \frac{15}{5} = 3 \\
+         \overline{y} = \frac{\sum y}{n} = \frac{25}{5} = 5
+    \end{align}
     
   substituting values in eq\eqref{eq:eq_x_on_y} we get 
  
-      \begin{align}
-          x-3 = \frac{4}{5}(y-5) \\
-          5x - 15 = 4y - 20 
-      \end{align}
-      
+    \begin{align}
+         x-3 = \frac{4}{5}(y-5) \\
+         5x - 15 = 4y - 20 
+    \end{align}
+    
    final simplyfied equation is 
-      \begin{equation}
-          \label{eq:3}
+   
+    \begin{equation}
+         \label{eq:3}
           5x - 4y + 5 = 0
     \end{equation}
     
-    
-    
-$\therefore$ regression equation of $x$ on $y$ is $5x-4y+5$ and the plot of eq\eqref{eq:3} is down below
+$\therefore$ regression equation of $x$ on $y$ is $5x-4y+5$ 
 
 
 
-\begin{figure}[h!]
-        \centering
+    \begin{figure}[h!]
+		\centering
      	\includegraphics[width=\columnwidth]{figures/Figure_1.png}
     	\caption{graph of regression equation of $x$ on $y$}
-        \label{Fig1}
-\end{figure}
+	    \label{Fig1}
+    \end{figure}
 
 
-\end{flushleft}
+
 \end{document}
