@@ -1,0 +1,101 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb,amsthm}
+% \usepackage{graphicx}
+
+% \let\vec\mathbf
+% \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+
+
+
+\title{Assignment 3 (CBSE CLASS 9 Statistics) }
+\author{Busireddy Asli Nitej Reddy (CS21BTECH11011)}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document contains the solution to Example 7 of Chapter 14 (Statistics) in the CBSE Class 9.
+\end{abstract}
+
+\section*{\textbf{Problem}}
+     
+        The marks obtained by 30 students of Class X of a certain school in a Mathematics paper consisting of 100 marks are presented in Table below. Find the mean of the marks obtained by the students.
+        
+       \begin{table}[!ht]
+            \centering
+            \resizebox{\columnwidth}{!}
+            {
+                \begin{tabular}{c c c c c c c c c c}
+                  10 &20 &36 &92 &95 &40 &50 &56 &60 &70\\
+                  92 &88 &80 &70 &72 &70 &36 &40 &36 &40\\
+                  92 &40 &50 &50 &56 &60 &70 &60 &60 &80\\
+                \end{tabular}
+            }
+            \caption{list of all marks}
+            \label{table:table1}
+       \end{table}
+
+\section*{\textbf{Solution}}
+       
+
+       \begin{table}[!ht]
+            \centering
+            \resizebox{\columnwidth}{!}
+            {
+                \begin{tabular}{|c| c| c| }
+                \hline
+                 marks($x_{i}$) & Number of students($f_{i}$) & $ f_{i}\times x_{i}$ \\
+                 \hline
+                 $10$   & $1$ & $10$  \\
+                 $20$   & $1$ & $20$  \\
+                 $36$   & $3$ & $108$ \\
+                 $40$   & $4$ & $160$ \\
+                 $50$   & $3$ & $150$ \\
+                 $56$   & $2$ & $112$ \\
+                 $60$   & $4$ & $240$ \\
+                 $70$   & $4$ & $280$ \\
+                 $72$   & $1$ & $72$  \\
+                 $80$   & $1$ & $80$  \\
+                 $88$   & $2$ & $176$ \\
+                 $92$   & $3$ & $276$ \\
+                 $95$   & $1$ & $95$  \\
+                 \hline
+                    \textbf{Total} & $\sum_{i=1}^{13} f_{i} = 30$ & $\sum_{i=1}^{13} f_{i}x_{i} = 1779$ \\
+                 \hline
+                \end{tabular}
+            }
+            \caption{}
+            \label{table:table2}
+       \end{table}
+       
+       
+       the formulae for calculating Mean is 
+         \begin{equation}
+          \label{eq:mean}
+            \frac {\sum_{i=1}^{13} f_{i}x_{i} }{\sum_{i=1}^{13} f_{i}}
+         \end{equation}
+         
+    substituting the values in eq\eqref{eq:mean} 
+ 
+    \begin{align}
+        \text{Mean} &= \frac{1779}{30} \\
+                    &= 59.3
+    \end{align}
+    
+    $\therefore$ the Mean of marks of students is $59.3$
+    
+
+
+
+
+
+\end{document}
