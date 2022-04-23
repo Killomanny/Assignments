@@ -3,7 +3,7 @@ import openpyxl
 # from openpyxl.styles import Alignment
 from collections import Counter
 
-df = pd.read_excel('raw.xlsx', 'Sheet1', header=None)
+df = pd.read_excel('data/raw.xlsx', 'Sheet1', header=None)
 a = df.to_numpy()
 
 df = pd.DataFrame(a)
