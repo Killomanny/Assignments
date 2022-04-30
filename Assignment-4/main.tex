@@ -1,0 +1,190 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+
+
+\title{Assignment 4 (CBSE Class 11 Ex 16.4 Example 12	 }
+\author{Busireddy Asli Nitej Reddy (CS21BTECH11011)}
+\date{}
+
+
+
+\begin{document}
+
+
+
+\maketitle
+
+
+
+\begin{abstract}
+This document contains the solution to Example 12 of Chapter 16 (Probability) in the CBSE Class 11.
+\end{abstract}
+
+
+
+\section*{\textbf{Problem}}
+
+  Two students Anil and Ashima appeared in an examination. The probability that Anil will qualify the examination is $0.05$ and that Ashima will qualify the examination is $0.10$. The probability that both will qualify the examination is $0.02$. Find the probability that
+     \begin{enumerate}[a)]
+         \item Both Anil and Ashima will not qualify the examination.
+         \item Atleast one of them will not qualify the examination and
+         \item Only one of them will qualify the examination.
+     \end{enumerate}
+
+
+
+\section*{\textbf{Solution}}
+
+let A and B denote two events where A denotes Anil passes and B denotes Ashima passes the examination given $\pr{A} = 0.05, \pr{B} = 0.10 $ and $\pr{A B} = 0.02 $. 
+
+
+
+\begin{enumerate}
+
+
+
+
+     \item[(i)] Let the event ‘both Anil and Ashima will not qualify the examination’ be T and probability for that is denoted as $\pr{T}$ and it is expressed as $T = A^{\prime}B^{\prime} =  \brak{A+B}^{\prime}$
+
+          \begin{align}
+              \pr{T} &=  \pr{\brak{A+B}^{\prime}}  \\
+              \label{eq:form1}
+                     &= 1 - \pr{A+B}
+          \end{align} 
+    
+     and for calculating value of $\pr{A+B}$ we use
+    
+          \begin{multline}
+                \label{eq:sum}
+                      \pr{A+B} = \pr{A} + \pr{A} \\
+                      - \pr{A B}
+          \end{multline}
+    
+    on substituting value's in eq\eqref{eq:sum} will get
+    
+          \begin{align}
+                \pr{A+B}  &=  0.05 + 0.10 - 0.02 \\
+                          &=  0.13
+          \end{align}
+    
+    resubstituting this in eq\eqref{eq:form1} we will get
+    
+          \begin{align}
+                \pr{T} &= 1 - 0.13 \\
+                       &= 0.87  
+          \end{align} 
+    
+    $\therefore$ the probability that both Anil and Ashima will not qualify the examination is $0.87$
+     
+     
+     
+     
+     \item[(ii)] Let the event where Atleast one of them will not qualify the examination be K and the probability is given by $\pr{K}$
+     
+          \begin{align}
+                \pr{K} &= \pr{A^{\prime}+B^{\prime}} \\
+                       &= \pr{\brak{A B}^{\prime}} \\
+                       &= 1 - \pr{A B}
+          \end{align}
+    
+    on substituting value 
+    
+          \begin{align}
+               \pr{K} &= 1 - 0.02  \\
+                      &= 0.98 
+          \end{align}
+    
+    $\therefore$ the probability that atleast one of them will not qualify the examination is $0.98$
+    
+    
+    
+    
+    \item[(iii)] Let the event where Only one of them will qualify the examination be D and probability of that event is given by $\pr{D}$  and is given by
+    
+           \begin{align}
+               \label{eq:form3}
+               \pr{D} = \pr{\brak{A B^{\prime}} + \brak{A^{\prime} B}}   
+           \end{align}
+    
+    as both events are mutually exclusive because both cannot exist together one with Anil pass other with Anil fail same for Ashima 
+    
+            \begin{align}
+                \brak{A B^{\prime}}\brak{A^{\prime} B} = 0, \because BB^{\prime} = 0
+                \label{eq:axiom_sum_AB}
+            \end{align}
+            
+    Hence, $ \brak{A B^{\prime}} $ and $ \brak{A^{\prime} B}  $ are mutually exclusive \\  
+    so we can simplyfy the eq\eqref{eq:form3} further more as  
+    
+            \begin{align}
+                     \label{eq:form6}
+                     \pr{D} = \pr{\brak{A B^{\prime}}} + \pr{\brak{A^{\prime} B}}
+            \end{align}
+    
+    further $ \pr{A B^{\prime}} $ and $ \pr{A^{\prime} B} $ can be simplified as
+    
+            \begin{align}
+                  A = A \brak{B+B^{\prime}} =  AB + AB^{\prime}
+                 \label{eq:axiom_sum_A}
+            \end{align}
+    
+    and 
+    
+            \begin{align}
+                  \brak{ AB}\brak{  AB^{\prime}} = 0, \because BB^{\prime} = 0
+                  \label{eq:axiom_sum_ABP}
+                  \end{align}
+                  
+    Hence, $AB$ and $AB^{\prime}$ are mutually exclusive and 
+    
+            \begin{align}
+                     \pr{A} = \pr{AB} + \pr{AB^{\prime}} \\
+                  \implies 
+                     \pr{A B^{\prime}} =  \pr{A} - \pr{AB}
+                     \label{eq:axiom_sum_ABPP}
+            \end{align}
+    
+    similarly we can also get for 
+    
+            \begin{align}
+                   \pr{A^{\prime} B} =  \pr{B} - \pr{AB}
+                   \label{eq:axiom_sum_ABPPP}
+            \end{align}
+    
+    substituting eq\eqref{eq:axiom_sum_ABPPP} and eq\eqref{eq:axiom_sum_ABPP} in eq\eqref{eq:form6} we will get
+    
+            \begin{multline}
+                  \label{eq:sum2}
+                   \pr{D} = \pr{A} - \pr{AB} 
+                 \\
+                   +\pr{B} - \pr{AB}
+            \end{multline}
+    
+    on substituting value we will get 
+    
+            \begin{align}
+                 \pr{D} &=  0.05 - 0.02 + 0.10 - 0.02 \\
+                        &= 0.11
+            \end{align}    
+    
+    $\therefore$ the probability where Only one of them will qualify the examination is $0.11$
+    
+
+
+\end{enumerate}
+
+
+
+\end{document}
