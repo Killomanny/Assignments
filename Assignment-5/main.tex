@@ -1,0 +1,158 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+
+
+\title{Assignment 5 ( Class 11 Miscellaneous ex 16 7 )}
+\author{Busireddy Asli Nitej Reddy (CS21BTECH11011)}
+\date{}
+
+
+
+\begin{document}
+
+
+
+\maketitle
+
+
+
+\begin{abstract}
+This document contains the solution to Cbse 11  Probability Miscellaneous problem 7	
+\end{abstract}
+
+
+
+\section*{\textbf{Problem}}
+
+ A and B are two events such that  $\pr{A} = 0.54$, $\pr{B} = 0.69$ and $\pr{A B} = 0.35$ Find
+     \begin{enumerate}[i)]
+         \item $\pr{A+B}$
+         \item $\pr{A^{\prime} B^{\prime}}$
+         \item $\pr{A B^{\prime}}$
+         \item $\pr{A^{\prime} B}$
+     \end{enumerate}
+
+
+
+\section*{\textbf{Solution}}
+
+Given  $\pr{A} = 0.54$ , $\pr{B} = 0.69$ and $\pr{A B} = 0.35$
+
+
+
+\begin{enumerate}
+
+
+
+    \item[(i)]
+    
+           \begin{multline}
+                \label{eq:sum}
+                      \pr{A+B} = \pr{A} + \pr{B} \\
+                      - \pr{A B}
+           \end{multline}
+          
+           on substituting values we will get 
+          
+           \begin{align}
+               \pr{A+B} &= 0.54 + 0.69 - 0.35 \\
+               \pr{A+B} &= 0.88
+               \label{eq:val1}
+           \end{align}
+          
+          $\therefore$ the value of $\pr{A+B}$ is $0.88$
+          
+          
+          
+    \item[(ii)]
+    
+           \begin{align}
+              \pr{A^{\prime} B^{\prime}} &=  \pr{\brak{A+B}^{\prime}}  \\
+                                         &=   1 - \pr{A+B}
+                                         \label{eq:val2}
+           \end{align}  
+           
+           on substituting value from eq\eqref{eq:val1} in eq\eqref{eq:val2} we will get
+           
+           \begin{align}
+              \pr{A^{\prime} B^{\prime}} &= 1 - 0.88 \\  
+                                         &= 0.12
+           \end{align}            
+           
+           $\therefore$ the value of $\pr{A^{\prime} B^{\prime}}$ is $0.12$
+           
+       
+       
+    \item[(iii)] for finding $\pr{A B^{\prime}}$ we go like below process  
+            \begin{align}
+                  A = A \brak{B+B^{\prime}} =  AB + AB^{\prime}
+                 \label{eq:axiom_sum_A}
+            \end{align}
+    
+            and also
+    
+            \begin{align}
+                  \brak{ AB}\brak{  AB^{\prime}} = 0, \because BB^{\prime} = 0
+                  \label{eq:axiom_sum_ABP}
+            \end{align}
+                  
+            Hence, $AB$ and $AB^{\prime}$ are mutually exclusive so 
+    
+            \begin{align}
+                     \pr{A} = \pr{AB} + \pr{AB^{\prime}} \\
+                  \implies 
+                     \pr{A B^{\prime}} =  \pr{A} - \pr{AB}
+                     \label{eq:axiom_sum_ABPP}
+            \end{align}
+    
+            on substituting values in eq\eqref{eq:axiom_sum_ABPP} we will get
+            
+            \begin{align}
+                     \pr{A B^{\prime}} &= 0.54 - 0.35 \\
+                                       &= 0.19
+            \end{align}
+            
+            $\therefore$ the value of $\pr{A B^{\prime}}$ is $0.19$
+            
+            
+            
+    \item[(iv)] similarly based on \eqref{eq:axiom_sum_ABPP} we can also get for $\pr{A^{\prime} B}$ like 
+    
+            \begin{align}
+                   \pr{A^{\prime} B} =  \pr{B} - \pr{AB}
+                   \label{eq:axiom_sum_ABPPP}
+            \end{align}
+            
+            on substituting values in eq\eqref{eq:axiom_sum_ABPPP} we will get
+
+            \begin{align}
+                     \pr{A^{\prime} B} &= 0.69 - 0.35 \\
+                                       &= 0.34
+            \end{align}
+            
+            $\therefore$ the value of $\pr{A^{\prime} B}$ is $0.34$
+            
+            
+         
+    
+           
+    
+
+
+\end{enumerate}
+
+
+
+\end{document}
