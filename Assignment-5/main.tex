@@ -2,7 +2,6 @@
 \let\negthickspace\undefined
 \documentclass[journal,12pt,twocolumn]{IEEEtran}
 
-
 \usepackage{csquotes}
 \usepackage{comment}
 \usepackage{enumerate}
@@ -14,15 +13,19 @@
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
 
 
+
 \title{Assignment 5 ( Class 11 Miscellaneous ex 16 7 )}
 \author{Busireddy Asli Nitej Reddy (CS21BTECH11011)}
 \date{}
 
 
+
 \begin{document}
 
 
+
 \maketitle
+
 
 
 \begin{abstract}
@@ -45,7 +48,30 @@ This document contains the solution to Cbse 11  Probability Miscellaneous proble
 
 \section*{\textbf{Solution}}
 
-Given  $\pr{A} = 0.54$ , $\pr{B} = 0.69$ and $\pr{A B} = 0.35$
+
+Let the random variables $X_{i}$ map to the set $\{ 0,1 \}$ as described in Table
+
+
+    \begin{table}[!htb]
+        \centering
+         {
+          
+            \begin{tabular}{|c|c|}
+              \hline
+               variable & event \\ \hline
+               $X_{1}$ = 1  & A  \\ \hline
+               $X_{2}$ = 1  & B   \\
+              \hline
+            \end{tabular}
+            
+            }
+        \caption{ Random variables }
+        \label{tab:table}
+    \end{table}
+
+
+
+Given  $\pr{X_{1} = 1} = 0.54$ , $\pr{X_{2} = 1} = 0.69$ and $\pr{X_{1}=1,X_{2}=1} = 0.35$
 
 
 
@@ -54,18 +80,18 @@ Given  $\pr{A} = 0.54$ , $\pr{B} = 0.69$ and $\pr{A B} = 0.35$
 
 
     \item[(i)]
-    
            \begin{multline}
                 \label{eq:sum}
-                      \pr{A+B} = \pr{A} + \pr{B} \\
-                      - \pr{A B}
+                      \pr{X_{1} = 1 \cup X_{2} = 1} \\
+                         = \pr{X_{1} = 1} + \pr{X_{2} = 1} \\
+                                                    - \pr{X_{1} = 1,X_{2} = 1}
            \end{multline}
           
            on substituting values we will get 
           
            \begin{align}
-               \pr{A+B} &= 0.54 + 0.69 - 0.35 \\
-               \pr{A+B} &= 0.88
+               \pr{X_{1} = 1 \cup X_{2} = 1} &= 0.54 + 0.69 - 0.35 \\
+               \pr{X_{1} = 1 \cup X_{2} = 1} &= 0.88
                \label{eq:val1}
            \end{align}
           
@@ -75,49 +101,34 @@ Given  $\pr{A} = 0.54$ , $\pr{B} = 0.69$ and $\pr{A B} = 0.35$
           
     \item[(ii)]
     
-           \begin{align}
-              \pr{A^{\prime} B^{\prime}} &=  \pr{\brak{A+B}^{\prime}}  \\
-                                         &=   1 - \pr{A+B}
+           \begin{multline}
+              \pr{X_{1} = 0,X_{2} = 0} \\
+                                        =1 - \pr{X_{1} = 1 \cup X_{2} = 1}
                                          \label{eq:val2}
-           \end{align}  
+           \end{multline}  
            
            on substituting value from eq\eqref{eq:val1} in eq\eqref{eq:val2} we will get
            
            \begin{align}
-              \pr{A^{\prime} B^{\prime}} &= 1 - 0.88 \\  
-                                         &= 0.12
+              \pr{ X_{1} = 0 , X_{2} = 0 } &= 1 - 0.88 \\  
+                                           &= 0.12
            \end{align}            
            
            $\therefore$ the value of $\pr{A^{\prime} B^{\prime}}$ is $0.12$
            
        
        
-    \item[(iii)] for finding $\pr{A B^{\prime}}$ we go like below process  
-            \begin{align}
-                  A = A \brak{B+B^{\prime}} =  AB + AB^{\prime}
-                 \label{eq:axiom_sum_A}
-            \end{align}
-    
-            and also
-    
-            \begin{align}
-                  \brak{ AB}\brak{  AB^{\prime}} = 0, \because BB^{\prime} = 0
-                  \label{eq:axiom_sum_ABP}
-            \end{align}
-                  
-            Hence, $AB$ and $AB^{\prime}$ are mutually exclusive so 
-    
-            \begin{align}
-                     \pr{A} = \pr{AB} + \pr{AB^{\prime}} \\
-                  \implies 
-                     \pr{A B^{\prime}} =  \pr{A} - \pr{AB}
+    \item[(iii)] for finding $\pr{X_{1} = 1 , X_{2} = 0}$ we go like below process  
+            \begin{multline}
+                     \pr{X_{1} = 1 ,X_{2} = 0} \\
+                     =  \pr{X_{1} = 1} - \pr{X_{1} = 1 , X_{2} = 1}
                      \label{eq:axiom_sum_ABPP}
-            \end{align}
+            \end{multline}
     
             on substituting values in eq\eqref{eq:axiom_sum_ABPP} we will get
             
             \begin{align}
-                     \pr{A B^{\prime}} &= 0.54 - 0.35 \\
+                     \pr{X_{1} = 1 ,X_{2} = 0 } &= 0.54 - 0.35 \\
                                        &= 0.19
             \end{align}
             
@@ -125,24 +136,25 @@ Given  $\pr{A} = 0.54$ , $\pr{B} = 0.69$ and $\pr{A B} = 0.35$
             
             
             
-    \item[(iv)] similarly based on eq\eqref{eq:axiom_sum_ABPP} we can also get for $\pr{A^{\prime} B}$ like 
+    \item[(iv)] similarly based on eq\eqref{eq:axiom_sum_ABPP} we can also get for $\pr{X_{1} = 0 , X_{2} = 1 }$ like 
     
-            \begin{align}
-                   \pr{A^{\prime} B} =  \pr{B} - \pr{AB}
+            \begin{multline}
+                   \pr{X_{1} = 0 ,X_{2} = 1 } \\
+                   =  \pr{X_{2} = 1} - \pr{X_{1} = 1 ,X_{2} = 1}
                    \label{eq:axiom_sum_ABPPP}
-            \end{align}
+            \end{multline}
             
             on substituting values in eq\eqref{eq:axiom_sum_ABPPP} we will get
 
             \begin{align}
-                     \pr{A^{\prime} B} &= 0.69 - 0.35 \\
-                                       &= 0.34
+                     \pr{X_{1} = 0 ,X_{2} = 1} &= 0.69 - 0.35 \\
+                                               &= 0.34
             \end{align}
             
             $\therefore$ the value of $\pr{A^{\prime} B}$ is $0.34$
             
             
-    
+
 \end{enumerate}
 
 
