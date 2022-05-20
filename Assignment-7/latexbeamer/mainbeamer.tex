@@ -1,0 +1,215 @@
+\documentclass{beamer}
+\usepackage{listings}
+
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{tkz-euclide} 
+\usetikzlibrary{calc,math}
+\usepackage{float}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[version=4]{mhchem}
+
+
+\newcounter{saveenumi}
+
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+\usetheme{Boadilla}
+
+
+\title{ Assignment-6 ( Cbse 12 ex 13.2 12 )}
+\author{Asli}
+\institute{IIT Hyderabad}
+\date{\today }
+
+
+
+\begin{document}
+
+
+
+\begin{frame}
+      \titlepage
+\end{frame}
+
+
+
+\begin{frame}{Abstract}
+     \begin{block}{Abstract}
+          This document contains the solution to Cbse class $12$ ex $13.4 8$
+      \end{block}
+\end{frame}
+
+
+
+\begin{frame}{Problem}
+       \begin{block}{Question}
+           A random variable $X$ has the following probability distribution:
+           
+               \begin{table}[!htb]
+                     \centering
+                            {
+                                   \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+                                       \hline
+                                         $X$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$  \\ \hline
+                                      $P(X)$ & $0$ & $k$ & $2k$ & $2k$ & $3k$ & $k^{2}$ & $2 k^{2}$ &    $7k^{2}+k$ \\ \hline
+                                   \end{tabular}
+                              }
+                         \caption{ Probability Distribution }
+                         \label{tab:table}
+              \end{table}
+              
+              determine
+              
+              \begin{enumerate}
+                  \item $k$
+                  \item $P(X < 3)$
+                  \item $P(X > 6)$
+                  \item $P(0 < X < 3)$
+              \end{enumerate}
+                          
+       \end{block}
+       
+\end{frame}
+
+
+
+\begin{frame}{Theory}
+
+        \begin{block}{Property required 1}
+                The sum of all the values of $P(X)$ should always sum upto one.
+                
+                       \begin{align}
+                              \sum^{n}_{i = 1}p_i = 1, \text{for $i = {1,2,3,...,n}$}
+                              \label{eq:form1}
+                       \end{align}
+        \end{block}
+        
+        \begin{block}{Property required 1}
+                 The value of P(X) should always be positive.
+                 
+                       \begin{align}
+                              p_i>0, \text{for $i = {1,2,3,...,n}$}
+                              \label{eq:form2}
+                       \end{align}
+                       
+        \end{block}
+        
+\end{frame}
+
+
+
+\begin{frame}{Solution 1}
+
+       \begin{block}{determining $k$}
+                with help of Eq\eqref{eq:form1} , Eq\eqref{eq:form2} and based on values on Table\ref{tab:table} we can write
+                
+                        \begin{align}
+                           &\implies 0 + k + 2k + 2k + 3k + k^{2} + 2k^{2} + ( 7k^{2} + k )   =  1 \\
+                           &\implies 10k^{2} + 9k = 1 \\
+                           &\implies 10k^{2} + 9k - 1 \\
+                           &\implies \brak{10k - 1}\brak{k+1} 
+                        \end{align}
+       \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Solution 1}
+
+       \begin{block}{continuation of determining $k$}
+                               So $k$ can have values $\frac{1}{10}$ , $-1$ but we know based on Eq\eqref{eq:form2} that probability cannot be negative \\
+                               $\therefore$ the value of $k$ is $0.1$
+       \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Solution 2}
+
+       \begin{block}{finding value of $P(X < 3)$}
+       
+                \begin{align}
+                    P(X < 3 ) &= P(X = 0 ) + P(X = 1 ) + P(X = 2 ) \\
+                              &= 0 + k + 2k \\
+                              &= 3k \\
+                              &= 0.3 
+                \end{align}
+                
+                $\therefore$ the value 0f $P(X < 3 )$ is $0.30$
+       \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Solution 3}
+
+       \begin{block}{finding value of $P(X > 6)$}
+       
+                \begin{align}
+                    P(X > 6 ) &= P(X = 7 )  \\
+                              &= 7k^{2} + k \\
+                              &= 7\brak{0.1}^{2} + 0.1 \\
+                              &= 0.07 + 0.1 \\
+                              &= 0.17 
+                \end{align}
+                
+                $\therefore$ the value 0f $P(X > 6 )$ is $0.17$
+       \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Solution 4}
+       \begin{block}{finding value of $P(0 < X < 3)$}
+       
+                \begin{align}
+                    P(0 < X < 3 )  &= P(X = 1 ) + P(X = 2 ) \\
+                                   &= k + 2k \\
+                                   &= 3k \\
+                                   &= 0.3
+                \end{align}
+                
+                $\therefore$ the value 0f $P(0 < X < 3)$ is $0.30$
+       \end{block}
+
+\end{frame}
+
+
+         
+\end{document}
+
