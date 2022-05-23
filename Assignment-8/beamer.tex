@@ -1,0 +1,201 @@
+\documentclass{beamer}
+\usepackage{listings}
+
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{tkz-euclide} 
+\usetikzlibrary{calc,math}
+\usepackage{float}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[version=4]{mhchem}
+
+
+\newcounter{saveenumi}
+
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+
+\usetheme{Boadilla}
+
+
+\title{ Assignment-8 Papoullis chapter 4 exercise 17 question}
+\author{Asli}
+\institute{IIT Hyderabad}
+\date{\today }
+
+
+
+\begin{document}
+
+
+
+\begin{frame}
+      \titlepage
+\end{frame}
+
+
+
+\begin{frame}{Abstract}
+     \begin{block}{Abstract}
+          This document contains the solution to Papoullis chapter 4 exercise 17 question
+      \end{block}
+\end{frame}
+
+
+
+\begin{frame}{Problem}
+
+          \begin{block}{Problem}
+              Show that if $\beta(t)$ = $f(t| x > t)$ is the conditional failure rate of the random variable x and $\beta(t) = kt $, then $f(x)$ is a Rayleigh density
+           \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+
+            \begin{block}{Given things}
+                 
+                    given $\beta(t)$ = $f(t| x > t)$ is the conditional failure rate of the random variable x and $\beta(t) = kt $
+                  
+                    \begin{align}
+                         \beta(t) &= f(t| x > t) \\
+                                  &= \frac{f(t)}{1 - F(t)} \\
+                                  &= \frac{ \frac{d}{dt}F(t) }{1 - F(t)}
+                                  \label{eq:form1}
+                    \end{align}
+                
+            \end{block}
+    
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+
+            \begin{block}{Continuation}
+            
+                  on substituting $\beta(t)$ in Eq\eqref{eq:form1} we will get below thing
+                  
+                    \begin{align}
+                         kt &= \frac{ \frac{d}{dt}F(t) }{1 - F(t)} \\
+                            &= \frac{d}{dt}\brak{ -\log[1-F(t)]} 
+                    \end{align}
+                    
+                  Integrating both sides of this equation from 0 to x yields
+
+
+                
+            \end{block}
+    
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+   
+            \begin{block}{Continuation}
+               
+                as $\beta(t) = kt > 0 $ so t cannot be negative so we can say like for all $F(x)$ where $x < 0 $ or $ x = 0 $ the value is $0$ \\
+                also for integration we take limits from $0$ to $t$ for the same reason 
+            
+            \end{block}
+    
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+
+            \begin{block}{Continuation}
+                  
+                    \begin{align}
+                       \int_{0}^{x}(kt) dt = \brak{-\log[1-F(x)]} - \brak{-\log[1-F(0)]} 
+                       \label{eq:form2}
+                    \end{align}
+                    
+                    since $ F(0)  = 0 $ we can write and simplyfy Eq\eqref{eq:form2} as
+                    
+                    \begin{align}
+                        \frac{k(x)^{2}}{2} = -\log[1-F(x)] 
+                        \label{eq:form3}
+                    \end{align}
+                
+            \end{block}
+    
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+
+            \begin{block}{Continuation}
+                  
+                  on simplyfying Eq\eqref{eq:form3} we will get
+                  
+                    \begin{align}
+                        1-F(x) = {e}^{-\frac{k(x)^{2}}{2}} 
+                        \label{eq:form4}
+                    \end{align}
+                    
+                  on further simplyfying Eq\eqref{eq:form4} we will get
+                  
+                    \begin{align}
+                        F(x) = 1 - {e}^{-\frac{k(x)^{2}}{2}} 
+                        \label{eq:form5}
+                    \end{align}
+                
+            \end{block}
+    
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+
+            \begin{block}
+                  
+                  on Diffrentiating Eq\eqref{eq:form5} we will get
+                  
+                    \begin{align}
+                         f(x) =  kx\brak{e^{-\frac{k(x)^{2}}{2}}} \text{ for $ x > 0 $}
+                    \end{align}
+                    
+                    which is nothing but in the form of Rayleigh density
+                    
+            \end{block}
+    
+\end{frame}
+
+         
+\end{document}
