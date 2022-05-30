@@ -65,45 +65,53 @@ columns=fullflexible
 
 
 \begin{frame}{Abstract}
-     \begin{block}{Abstract}
+      \begin{block}{Abstract}
           This document contains the solution to Papoulis chap 6 Ex 6.10
       \end{block}
 \end{frame}
 
- \section{Question}
+
+
+\begin{frame}
+      \begin{block}{Question}
+          $x$ and $y$ are uniformly distributed on the triangular region $0 \leq x - y \leq x + y \leq 2$ Find the p.d.f. of $x + y$ and $x - y$
+      \end{block}
+\end{frame}
+     
+     
+     
+\begin{frame}{Solution}
+      \begin{block}{Solution-1}
+          
+            \begin{align}
+                     Z &= X + Y    \\
+              F_{Z}(z) &= \int_{0}^{\frac{z}{2}} \int_{x}^{2-x} f_{XY}(x,y)dx  \\
+                       &= \frac{z^{2}}{4} , 0 < z < 2 \\
+              f_{Z}(z) &= \frac{z}{2} , 0 < z < 2
+            \end{align}
+          
+      \end{block}
+\end{frame}
+
+
+
+\begin{frame}{Solution}
+      \begin{block}{Solution-2}
+      
+            \begin{align}
+                    w &= X - Y \\
+             F_{W}(w) &= \frac{1}{2}( 2 + w )( 1 + \frac{w}{2} ) \\
+                      &= \brak{ 1 + \frac{w}{2} }^{2} \\
+             F_{W}(w) &=   
+                   \begin{cases}
+                            1 + \frac{w}{2} , -2 < w < 0  \\
+                            0 , \text{otherwise}
+                   \end{cases}
+            \end{align}
+          
+      \end{block}
     
-     \begin{frame}
-         \textbf{Question:}The random variables $X$ and $X$ are independent and $Z = X + Y$.Find $f_{Y}(y)$.If ,
-     \begin{align}
-         f_{X}(x)=ce^{-cx}U(x)\\
-         f_{Z}(z)=c^{2}ze^{-cz}U(z)
-     \end{align}
-     \end{frame}
-     \section{Solution}
-     \begin{frame}
-     \textbf{Solution:}Given,
-     \begin{align}
-     Z=X+Y    
-     \end{align}
-     So we know if $X$ and $Y$ are independent variables,
-     \begin{align}
-       &f_{Z}(z)=\int_{0}^{z}f_{X}(x)*f_{Y}(z-y) dx\\
-       \Rightarrow&  f_{Z}(z)= \int_{0}^{z}f_{X}(z-y)*  f_{Y}(y) dy
-     \end{align}
-     \end{frame}
-     \begin{frame}
-     Lets use equation 5 since we have to find $y$,
-     \begin{align}
-         c^{2}e^{-cz}zU(z)&= \int_{0}^{z}ce^{-c(z-y)}U(z)*f_{Y}(y) dy\\
-         \Rightarrow cz&=\int_{0}^{z}e^{cy}*f_{Y}(y) dy
-     \end{align}
-          Now differentiating on both sides  w.r.t $z$ we get,
-\begin{align}
-    &c=e^{cz}f_{Y}(z)\\
-    \Rightarrow&f_{Y}(z)=ce^{-cz}
-\end{align}
-The above derived equation is $f_{Y}(y)$.
-     \end{frame}
+\end{frame}
 
 
          
