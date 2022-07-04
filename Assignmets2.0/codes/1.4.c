@@ -1,5 +1,3 @@
-17 lines (14 sloc)  295 Bytes
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
