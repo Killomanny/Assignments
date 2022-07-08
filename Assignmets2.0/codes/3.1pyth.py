@@ -1,35 +1,31 @@
-from more_itertools import sample
-import numpy as np
 import matplotlib.pyplot as plt
-import mpmath as mp
+import numpy as np
 
-simlen = 1000000
-sample = np.loadtxt('custom.dat',dtype='double')
+C = np.loadtxt("custom.dat", dtype='double')
+
+N = 10 ** 6
+pts = 40
+
+x = np.linspace(-5, 5, pts)
+
+F_sim = []
+for i in range(0, pts):
+    F_sim.append(np.size(np.nonzero(C < x[i])) / N)
 
 
-x = np.linspace(-5,5,40)
-CF=[]
-for i in range(0,40):
-	CF_ind = np.nonzero(sample < x[i]) 
-	CF_n = np.size(CF_ind)
-	CF.append(CF_n/simlen) 
+def exp_cdf(x):
+    if x <= 0:
+        return 0.0
+    else:
+        return (1 - np.exp(-x / 2))
 
-def g(x) :
-   return (1-mp.exp(-x/2))
 
-def cdf(x):
+vec_exp = np.vectorize(exp_cdf, otypes=['double'])
 
-   if x<0 :
-         return 0
-   else:
-         return g(x)
-         
-y=[-3,-2,1,2,3,4]
-CDF = np.vectorize(cdf, otypes=['double'])
-         
-plt.plot(x[0:40].T,CF,"o")
-plt.plot(x,CDF(x))
+plt.plot(x, F_sim, 'o', label="Empirical", color="blue")
+plt.plot(x, vec_exp(x), label="Theoritical", color="orange")
 plt.grid()
-plt.xlabel('$x$')
-plt.ylabel('$F_X(x)$')
+plt.xlabel("x")
+plt.ylabel("$F_V(x)$")
+plt.legend()
 plt.show()
