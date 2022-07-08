@@ -1,24 +1,20 @@
-#Importing numpy, scipy, mpmath and pyplot
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
+T = np.loadtxt("tri.dat")
+pts = 50
+N = 10 ** 6
 
-x = np.linspace(-4,4,30)#points on the x axis
-simlen = int(1e6) #number of samples
-err = [] #declaring probability list
-#randvar = np.random.normal(0,1,simlen)
-randvar = np.loadtxt('tri.dat',dtype='double')
-#randvar = np.loadtxt('gau.dat',dtype='double')
-for i in range(0,30):
-	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
-	err_n = np.size(err_ind) #computing the probability
-	err.append(err_n/simlen) #storing the probability values in a list
+x = np.linspace(-6, 6, pts)
 
-	
-plt.plot(x.T,err)#plotting the CDF
-plt.grid() #creating the grid
-plt.xlabel('$x$')
-plt.ylabel('$F_X(x)$')
+D = []
 
+for i in range(0, pts):
+    T.append(np.size(np.nonzero(T < x[i])) / N)
 
-plt.show() #opening the plot window
+plt.plot(x.T, D, label="CDF")
+plt.grid()
+plt.xlabel("x")
+plt.ylabel("$F_T(x)$")
+plt.legend()
+plt.show()
