@@ -1,48 +1,49 @@
-#Importing numpy, scipy, mpmath and pyplot
 import numpy as np
-import mpmath as mp
-import scipy 
 import matplotlib.pyplot as plt
+import pandas as pd
+import math
+
+pts = 60
+n = 10 ** 6
 
 
 
-maxrange=50
-maxlim=6
-x = np.linspace(-maxlim+2,6,maxrange)#points on the x axis
-simlen = int(1e6) #number of samples
-err = [] #declaring probability list
-pdf = [] #declaring pdf list
-h = 2*maxlim/(maxrange-1);
-#randvar = np.random.normal(0,1,simlen)
-#randvar = np.loadtxt('uni.dat',dtype='double')
-randvar = np.loadtxt('tri.dat',dtype='double')
+X = np.fromfile("tri.dat", dtype=float, count=n, sep='', offset=0)   #this is big X
+x = np.linspace(-3, 3, pts)
 
-for i in range(0,maxrange):
-	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
-	err_n = np.size(err_ind) #computing the probability
-	err.append(err_n/simlen) #storing the probability values in a list
 
-	
-for i in range(0,maxrange-1):
-	test = (err[i+1]-err[i])/(x[i+1]-x[i])
-	pdf.append(test) #storing the pdf values in a list
 
-def tri_cdf(x):
-    if(x>=0 and x<1):
-    	return x
-    elif(x==1):
-     	return 1
-    elif (x>1 and x<=2):
-        return 2-x
+# Empirical PDF
+P = []
+for i in range(0, pts - 1):
+    P.append((F[i + 1] - F[i]) / (x[i + 1] - x[i]))
+
+
+
+# Theoretical PDF
+def gen_p_theory(xi):
+    if (xi <= 0):
+        return 0.0
+    elif (xi <= 1):
+        return xi
+    elif (xi <= 2):
+        return 2 - xi
     else:
-        return 0
-theory=np.vectorize(tri_cdf,otypes=['double'])
-plt.plot(x[0:(maxrange-1)].T,pdf,'o')
-plt.plot(x,theory(x))
-plt.grid() #creating the grid
-plt.xlabel('$x_i$')
-plt.ylabel('$p_X(x_i)$')
-plt.legend(["Numerical","Theory"])
+        return 0.0
 
 
-plt.show() #opening the plot window
+vecgen_p_theory = np.vectorize(gen_p_theory)
+p_theory = vecgen_p_theory(x)
+
+
+
+
+plt.scatter(x.T, F, color="blue", label="Empirical CDF")  # plotting the empirical CDF
+plt.plot(x.T, F_theory, color="orange", label="Theoretical CDF")  # plotting the experimental CDF
+plt.grid()
+plt.minorticks_on()
+plt.xlabel("x")
+plt.ylabel("$F_T(x)$")
+plt.title("Theoretical CDF of T")
+plt.legend(loc="best")
+plt.show()
