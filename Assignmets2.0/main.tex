@@ -305,7 +305,7 @@ $ python3 1.2.py
 Find a  theoretical expression for $F_{U}(x)$.\\
 \solution Given $U$ is a uniform Random Variable
 \begin{align}
-p_{U}(x)=1 \text{ for } \\
+p_{U}(x)=1 \text{ for } 0 < x < 1 \\
 F_U(x)=\int_{-\infty}^{\infty}p_{U}(x)dx\\
 \boxed{\implies F_U(x)=
 \begin{cases}
@@ -314,6 +314,9 @@ F_U(x)=\int_{-\infty}^{\infty}p_{U}(x)dx\\
  1 &x\ge 1
 \end{cases}}
 \end{align}
+\begin{lstlisting}
+wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/1.3.py
+\end{lstlisting}
 \item
 The mean of $U$ is defined as
 %
@@ -353,8 +356,19 @@ E\sbrak{U^k} = \int_{-\infty}^{\infty}x^kdF_{U}(x)
     E\sbrak{U^2}&=\int_{-\infty}^{\infty}x^{2}dF_U(x)\\
     E\sbrak{U^2}&=\int_{0}^{1}x^{2}dF_U(x)\\
     \implies E\sbrak{U^2}&=\frac{1}{3}\\
-    \implies \boxed{\text{var}\sbrak{U}=\frac{1}{12}=0.0833}
+    \implies \boxed{\text{var}\sbrak{U}=\frac{1}{12}}
 \end{align}
+Theoretical values 
+\begin{align}
+E(X) &= 0.5 \\
+Var(X) &= 0.08333
+\end{align}
+Numerical values calculated in C program
+\begin{align}
+E(X) = 0.500007\\
+Var(X) = 0.083307
+\end{align}
+
 \section{Central Limit Theorem}
 %
 \begin{enumerate}[label=\thesection.\arabic*
@@ -380,21 +394,14 @@ $ ./a.out
 \end{lstlisting}
 \item
 Load gau.dat in python and plot the empirical CDF of $X$ using the samples in gau.dat. What properties does a CDF have?\\
-\solution The CDF of $X$ is plotted in Fig. \ref{fig:2.2}\\
-using the code below
+\solution The CDF of $X$ is plotted using the code below
 \begin{lstlisting}
 wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/2.2.py
 \end{lstlisting}
-Download the above files and execute the following commands to produce Fig.\ref{fig:2.2}
+run the following code to get the graph
 \begin{lstlisting}
 $ python3 2.2.py
 \end{lstlisting}
-\begin{figure}[!h]
-\centering
-\includegraphics[width=\columnwidth]{./figs/2.2.png}
-\caption{The CDF of $X$}
-\label{fig:2.2}
-\end{figure}
 Some of the properties of CDF 
 \begin{enumerate}
 \item $\lim_{x \to \infty}F_X(x) = 1$
@@ -408,25 +415,20 @@ p_{X}(x) = \frac{d}{dx}F_{X}(x)
 \end{align}
 What properties does the PDF have?
 \\
-\solution The PDF of $X$ is plotted in Fig. \ref{fig:2.3} using the code below
+\solution The PDF of $X$ is plotted using the code below
 \begin{lstlisting}
 wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/2.3.py
 \end{lstlisting}
-Download the above files and execute the following commands to produce Fig.\ref{fig:2.3}
+Download the above files and execute the following commands to produce the PDF
 \begin{lstlisting}
 $ python3 2.3.py
 \end{lstlisting}
-\begin{figure}[!h]
-\centering
-\includegraphics[width=\columnwidth]{./figs/2.3.png}
-\caption{The PDF of $X$}
-\label{fig:2.3}
-\end{figure}
 Some of the properties of the PDF:
 \begin{enumerate}
     \item Symmetric about $x=\mu$ in this case
     \item Decreasing function for $x>\mu$ and increasing for $x<\mu$ and attains maximum at $x=\mu$
     \item Area under the curve is unity.
+    \item the PDF takes non negative values
 \end{enumerate}
 \item Find the mean and variance of $X$ by writing a C program.\\
 \solution Download the following files and execute the  C program.
@@ -441,38 +443,56 @@ $ ./a.out
 \end{lstlisting}
 \item Given that 
 \begin{align}
-p_{X}(x) = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty,
+p_{X}\brak{x} = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x \infty,
 \end{align}
-repeat the above exercise theoretically.
+repeat the above exercise theoretically.\\
+\solution\\
+\begin{align}
+    E\sbrak{X} &= \int_{-\infty}^{\infty}x p_{X}\brak{x} dx \\
+    E\sbrak{X} &= \int_{-\infty}^{\infty}x
+    \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx    
+\end{align}
+Taking $\frac{x^2}{2} = t$,
+\begin{align}
+    E\sbrak{X} &= -\int_{\infty}^{\infty}
+    \frac{1}{\sqrt{2\pi}}\exp\brak{-t} dt\\
+    E\sbrak{X} &= 0
+\end{align}
+To calculate variance,
+\begin{align}
+    var\sbrak{X} &= E\sbrak{(X - E\sbrak{X})^2}\\
+    var\sbrak{X} &= E\sbrak{X^2}\\
+    var\sbrak{X} &= \int_{-\infty}^{\infty}x^2 p_{X}\brak{x} dx \\
+    var\sbrak{X} &= \int_{-\infty}^{\infty}x^2
+    \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx 
+\end{align}
+We know that,
+\begin{align}
+    \int_{-\infty}^{\infty}x^2\exp\brak{-\frac{x^2}{2}} &= \sqrt{2\pi}\\
+    var\sbrak{X} &= 1
+\end{align}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{./figs/2.3.png}
+    \caption{PDF of $X$}
+    \label{fig:my_label}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{./figs/2.2.png}
+    \caption{CDF of $X$}
+    \label{fig:my_label}
+\end{figure}
+\newpage
+The Python plot for the CDF and PDF of $X$ are
+\begin{lstlisting}
+https://github.com/Killomanny/Assignments/tree/main/Assignmets2.0/codes/2.5_1.py
+https://github.com/Killomanny/Assignments/tree/main/Assignmets2.0/codes/2.5_2.py
+\end{lstlisting}
 \end{enumerate}
-\solution 
-\begin{enumerate}
-    \item CDF is given by 
-    \begin{align}
-        F_X(x)&=\int_{-\infty}^{\infty}p_X(x)dx\\
-        \boxed{F_X(x)=1}
-    \end{align}
-    \item Mean is given by
-    \begin{align}
-        E(x)=\int_{-\infty}^{\infty}xp_X(x)dx\\
-        \implies \boxed{E(x)=0}
-    \end{align}
-    \item Variance is given by
-    \begin{align}
-        \text{var}\sbrak{U}&=E(U^2)-(E(U))^2\\
-E{x^2}&=\int_{-\infty}^{\infty}x^2p_X(x)dx \\
-&=\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}x^2exp\brak{-\frac{x^2}{2}}dx \\
-&=\frac{1}{\sqrt{2\pi}}\brak{x\int x exp\brak{-\frac{x^2}{2}}dx}
-\\ &-\frac{1}{\sqrt{2\pi}}\int \int \brak{x exp\brak{-\frac{x^2}{2}}}dx. dx\\
-&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}exp\brak{-\frac{x^2}{2}}dx \\
-&=\frac{\sqrt{2\pi}}{\sqrt{2\pi}}\\&=1
-        \implies\boxed{\text{var}\sbrak{U}=1}
-    \end{align}
-\end{enumerate}
-\section{From Uniform to Other}
+\section{From uniform to other}
 \begin{enumerate}[label=\thesection.\arabic*
 ,ref=\thesection.\theenumi]
-%
 \item
 Generate samples of 
 %
@@ -525,98 +545,95 @@ F_V(x) &= F_U(1 - e^{\frac{-x}{2}})
 %\item
 %Generate the Rayleigh distribution from Uniform. Verify your result through graphical plots.
 \end{enumerate}
+
 \section{Triangular Distribution}
 \begin{enumerate}[label=\thesection.\arabic*
 ,ref=\thesection.\theenumi]
     \item Generate
     \begin{align}
-        T=U_1+U_2
+        T = U_1 + U_2
     \end{align}
-    \solution Download the following files and execute the  C program.
+\solution\\
+Download and run the following C code to generate tri.dat file.
 \begin{lstlisting}
-wget https://github.com/Killomanny/Assignments/tree/main/Assignmets2.0/codes/4.1.c
-wget https://github.com/Killomanny/Assignments/tree/main/Assignmets2.0/codes/source.h
-\end{lstlisting}
-Download the above files and execute the following commands
-\begin{lstlisting}
-$ gcc 4.1.c
-$ ./a.out
+wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/4.1.c
 \end{lstlisting}
 \item Find the CDF of $T$.\\
-\solution The CDF of $T$ is plotted in Fig. \ref{fig:4.2} using the code below
-\begin{lstlisting}
-wget https://github.com/Killomanny/Assignments/tree/main/Assignmets2.0/codes/4.5cdf.py
-\end{lstlisting}
-Download the above files and execute the following commands to produce Fig.\ref{fig:4.2}
-\begin{lstlisting}
-$ python3 4.5cdf.py
-\end{lstlisting}
-\begin{figure}[!h]
-\centering
-\includegraphics[width=\columnwidth]{./figs/4.5cdf.png}
-\caption{The CDF of $T$}
-\label{fig:4.2}
-\end{figure}
-\item Find the PDF of $T$.\\
-\solution The PDF of $T$ is plotted in Fig. \ref{fig:4.2} using the code below
-\begin{lstlisting}
-wget https://github.com/Killomanny/Assignments/tree/main/Assignmets2.0/codes/4.5pdf.py
-\end{lstlisting}
-Download the above files and execute the following commands to produce Fig.\ref{fig:4.2}
-\begin{lstlisting}
-$ python3 4.5pdf.py
-\end{lstlisting}
-\begin{figure}[!h]
-\centering
-\includegraphics[width=\columnwidth]{./figs/4.5pdf.png}
-\caption{The PDF of $T$}
-\label{fig:4.3}
-\end{figure}
-\item Find the Theoreotical Expression for the PDF and CDF of $T$\\
 \solution
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/4.2.png}
+    \caption{CDF of $T$}
+    \label{fig:my_label}
+\end{figure}
+\clearpage
+The following code plots the CDF of $T$
+\begin{lstlisting}
+wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/4.2.py
+\end{lstlisting}
+\item Find the PDF of $T$.
+\solution
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/4.3.png}
+    \caption{PDF of $T$}
+    \label{fig:my_label}
+\end{figure}
+The following code plots the PDF of $T$
+\begin{lstlisting}
+wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/4.3.py
+\end{lstlisting}
+\item Find the theoritical expressions for PDF and CDF of $T$.\\
+\solution\\
 \begin{align}
-    T&=U_1+U_2\\
-    \implies p_T(t)&=\int_{-\infty}^{t}p_{U1}(x)p_{U2}(y)dx\\
-    \text{As,}p_{U1}(x)&=p_{U1}(y)=p_{U}(u)\\
-    \implies p_T(t)&=\int_{-\infty}^{t}p_{U}(u)p_{U}(t-u)du
-    \end{align}
-    \begin{enumerate}
-        \item Theoretical PDF 
-        \begin{enumerate}
-            \item $t\le 1$
-            \begin{align}
-                p_T(t)&=\int_{0}^{t}p_{U}(t-u)du\\
-                \implies p_T(t)&=\int_{0}^{t} du=t
-            \end{align}
-            \item $t> 1$
-             \begin{align}
-                p_T(t)&=\int_{0}^{1}p_{U}(t-u)du\\
-                \implies p_T(t)&=\int_{t-1}^{1} du=2-t
-            \end{align}
-        \end{enumerate}
-        $\implies\boxed{ P_T(t) =
-        \begin{cases}
-         t     &0 \le t \le 1 \\
-         2-t   &1 < t \le 2\\
-         0     &t<0 \text{ or }t>2
-        \end{cases}
-        }$\\
-        \item Theoretical CDF 
-        \begin{align}
-            F_T(t)=\int_{-\infty}^{t}p_T(u)du
-        \end{align}
-        $\implies\boxed{
-            F_{T}(t)=
-            \begin{cases}
-             0   &t<0\\
-             \dfrac{t^2}{2} &0\le t \le 1\\
-             2t-1-\dfrac{t^2}{2} &1<t \le 2\\
-             1 &t>2
-            \end{cases}
-            }$\\
-    \end{enumerate}
-\item Verify your results through a plot \\
-\solution The Results are verfied in the plots
-Fig \ref{fig:4.2} and Fig \ref{fig:4.3}
+    p_T(x) &= p_{U_1 + U_2}(x) = p_{U_1}(x) * p_{U_2}(x)\\
+    p_T(x) &= \int_{-\infty}^{\infty}p_{U_1}(\tau)p_{U_2}(x - \tau)\\
+    p_T(x) &= \int_0^1p_{U_2}(x - \tau)
+\end{align}
+\begin{align}
+    \displaystyle p_T(x) = \begin{cases} 
+    0 & \text{$x \leq 0$} \\  
+    \int_0^x 1d\tau & \text{$0 < x < 1$} \\  
+    \int_{x - 1}^1 1d\tau & \text{$1 \leq x < 2$} \\
+    0 & \text{$x > 2$}
+    \end{cases}
+\end{align}
+\begin{align}
+    \displaystyle p_T(x) = \begin{cases} 
+    0 & \text{$x \leq 0$} \\  
+    x & \text{$0 < x < 1$} \\  
+    2 - x & \text{$1 \leq x < 2$} \\
+    0 & \text{$x > 2$}
+    \end{cases}
+\end{align}
+Expression for CDF can be obtained by integrating $p_T(x)$ w.r.t. $X$
+\begin{align}
+    \displaystyle F_T(x) = \begin{cases} 
+    0 & \text{$x \leq 0$} \\  
+    \frac{x^2}{2} & \text{$0 < x < 1$} \\  
+    -\frac{x^2}{2} + 2x - 1 & \text{$1 \leq x < 2$} \\
+    1 & \text{$x > 2$}
+    \end{cases}
+\end{align}
+\item Verify the results through a plot.\\
+\solution\\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/4.5pdf.png}
+    \caption{Theoretical PDF of $T$}
+    \label{fig:my_label}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/4.5cdf.png}
+    \caption{The CDF of $T$}
+    \label{fig:my_label}
+\end{figure}
+PDF and CDF plotted by the Python codes
+\begin{lstlisting}
+wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/4.5pdf.py
+wget https://github.com/Killomanny/Assignments/blob/main/Assignmets2.0/codes/4.5cdf.py
+\end{lstlisting}
 \end{enumerate}
+
 \end{document}
