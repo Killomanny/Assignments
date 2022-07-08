@@ -1,35 +1,46 @@
-#Importing numpy, scipy, mpmath and pyplot
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+import math
+
+pts = 60
+n = 10 ** 6
 
 
-x = np.linspace(-4,4,30)#points on the x axis
-simlen = int(1e6) #number of samples
-err = [] #declaring probability list
-#randvar = np.random.normal(0,1,simlen)
-randvar = np.loadtxt('tri.dat',dtype='double')
-#randvar = np.loadtxt('gau.dat',dtype='double')
-for i in range(0,30):
-	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
-	err_n = np.size(err_ind) #computing the probability
-	err.append(err_n/simlen) #storing the probability values in a list
 
-def tri_cdf(x):
-    if(x>=0 and x<=1):
-    	return x*x/2
-    elif (x>1 and x<=2):
-        return 1-(x-2)*(x-2)/2
-    elif (x>2):
-    	return 1
+X = np.fromfile("tri.dat", dtype=float, count=n, sep='', offset=0)   #this is big X
+x = np.linspace(-3, 3, pts)
+
+
+# Empirical CDF
+F = []
+for i in range(0, pts):
+    Fcount = np.count_nonzero(X < x[i])
+    F.append(Fcount / n)
+	
+# Theoretical CDF
+def gen_F_theory(xi):
+    if (xi <= 0):
+        return 0.0
+    elif (xi <= 1):
+        return xi * xi / 2
+    elif (xi <= 2):
+        return -xi * xi / 2 + 2 * xi - 1
     else:
-        return 0
-theory=np.vectorize(tri_cdf,otypes=['double'])
+        return 1.0
 
-plt.plot(x.T,err,'o')#plotting the CDF
-plt.plot(x,theory(x))
-plt.grid() #creating the grid
-plt.xlabel('$x$')
-plt.ylabel('$F_X(x)$')
-plt.legend(["Numerical", "Theory"])
 
-plt.show() #opening the plot window
+vecgen_F_theory = np.vectorize(gen_F_theory)
+F_theory = vecgen_F_theory(x)
+
+
+
+plt.scatter(x.T[0:(pts - 1)], P, color="blue", label="Empirical PDF")  # plotting the empirical CDF
+plt.plot(x.T, p_theory, color="orange", label="Theoretical PDF")  # plotting the experimental CDF
+plt.grid()
+plt.minorticks_on()
+plt.xlabel("x")
+plt.ylabel("$p_T(x)$")
+plt.title("Theoretical PDF of T")
+plt.legend(loc="best")
+plt.show()
