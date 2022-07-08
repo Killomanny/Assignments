@@ -36,7 +36,7 @@ F_theory = vecgen_F_theory(x)
 
 
 plt.scatter(x.T[0:(pts - 1)], P, color="blue", label="Empirical PDF")  # plotting the empirical CDF
-plt.plot(x.T, p_theory, color="orange", label="Theoretical PDF")  # plotting the experimental CDF
+plt.plot(x.T, F_theory, color="orange", label="Theoretical PDF")  # plotting the experimental CDF
 plt.grid()
 plt.minorticks_on()
 plt.xlabel("x")
