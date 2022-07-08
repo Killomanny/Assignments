@@ -11,6 +11,11 @@ void combo(char *str,int len);
 void gausquare(char *str,int len);
 //end declaration
 
+
+
+
+
+
 //uniform func generator
 void uniform(char *str, int len)
 {
@@ -26,6 +31,11 @@ fprintf(fp,"%lf\n",(double)rand()/RAND_MAX);
 fclose(fp);
 
 }
+
+
+
+
+
 
 //mean calculator function
 double mean(char *str)
@@ -49,8 +59,12 @@ return temp;
 
 }
 
-//function to calculate mean of squared numbers
 
+
+
+
+
+//function to calculate mean of squared numbers
 double meansquare(char *str)
 {
 int i=0,c;
@@ -71,8 +85,12 @@ temp = temp/(i-1);
 return temp;
 }
 
-//guassian ditribution generator
 
+
+
+
+
+//guassian ditribution generator
 void gaussian(char *str, int len)
 {
 int i,j;
@@ -94,6 +112,12 @@ fprintf(fp,"%lf\n",temp);
 fclose(fp);
 
 }
+
+
+
+
+
+
 //Function to generate the sum of two uniform distributions
 void sumofuni(char *tri,int len)
 {
@@ -131,6 +155,12 @@ int signum(double a)
         return -1;
     }
 }
+
+
+
+
+
+
 //Function to generate equiprobable distribution belongs to {-1,1}
 void equiprobable(char *str,int len)
 {
